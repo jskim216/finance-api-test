@@ -1,10 +1,9 @@
 package jskim216.financeapi.financeInfo;
 
+import jskim216.financeapi.banks.Bank;
 import lombok.*;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Builder
 @AllArgsConstructor
@@ -19,5 +18,8 @@ public class Finance {
     private int id;
     private int year;
     private int month;
-    private String instituteCode;
+    private int amount;
+    @ManyToOne(targetEntity = Bank.class)
+    @JoinColumn(name = "institute_code")
+    private Bank instituteCode;
 }

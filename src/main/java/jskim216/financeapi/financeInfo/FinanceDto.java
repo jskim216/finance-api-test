@@ -19,7 +19,7 @@ public class FinanceDto {
     @NotNull
     private int month;
     @NotNull
-    private String instituteCode;
+    private Bank instituteCode;
     @NotNull
     private int amount;
 }
