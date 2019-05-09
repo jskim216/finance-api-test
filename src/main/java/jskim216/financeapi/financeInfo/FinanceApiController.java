@@ -41,11 +41,10 @@ public class FinanceApiController {
     }
 
     @GetMapping("institution-list-yearly")
-    public ResponseEntity institutionListYearly() {
+    public ResponseEntity institutionListYearly(Pageable pageable) {
 
-
-
-        return ResponseEntity.ok("");
+        Page<Finance> page = this.financeRepository.findAllGroupByYearly(pageable);
+        return ResponseEntity.ok(page);
     }
 
 }
