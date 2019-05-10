@@ -1,4 +1,4 @@
-package jskim216.financeapi.Codes;
+package jskim216.financeapi.codes;
 
 import java.util.Arrays;
 import java.util.List;

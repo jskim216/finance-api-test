@@ -1,6 +1,6 @@
 package jskim216.financeapi.data;
 
-import jskim216.financeapi.Codes.BankCode;
+import jskim216.financeapi.codes.BankCode;
 import jskim216.financeapi.banks.Bank;
 import jskim216.financeapi.banks.BankDto;
 import jskim216.financeapi.banks.BankRepository;
