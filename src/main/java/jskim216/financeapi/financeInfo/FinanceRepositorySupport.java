@@ -19,9 +19,9 @@ public class FinanceRepositorySupport extends QuerydslRepositorySupport {
         this.queryFactory = jpaQueryFactory;
     }
 
-    public List<FinanceDto> findAllGroupByYear() {
+    public List<FinanceItemDto> findAllGroupByYear() {
 
-        return queryFactory.select(Projections.constructor(FinanceDto.class, finance.instituteCode, finance.year, finance.amount.sum().as("total_amount")))
+        return queryFactory.select(Projections.bean(FinanceItemDto.class, finance.instituteCode, finance.year, finance.amount.sum().as("total_amount")))
                 .from(finance)
                 .groupBy(finance.instituteCode, finance.year)
                 .fetch();

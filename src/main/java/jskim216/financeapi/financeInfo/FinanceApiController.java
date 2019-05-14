@@ -54,7 +54,7 @@ public class FinanceApiController {
 //        Page<Finance> page = this.financeRepository.findAllGroupByYearly(pageable);
 //        JPAQueryFactory queryFactory
 
-        List<FinanceDto> result = this.financeRepositorySupport.findAllGroupByYear();
+        List<FinanceItemDto> result = this.financeRepositorySupport.findAllGroupByYear();
 
         return ResponseEntity.ok(result);
     }
