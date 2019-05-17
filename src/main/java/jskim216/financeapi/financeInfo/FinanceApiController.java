@@ -1,6 +1,5 @@
 package jskim216.financeapi.financeInfo;
 
-import com.querydsl.core.Tuple;
 import jskim216.financeapi.banks.Bank;
 import jskim216.financeapi.banks.BankRepository;
 import jskim216.financeapi.data.FinanceDataManufacture;
@@ -15,9 +14,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
-
-import static jskim216.financeapi.financeInfo.QFinance.finance;
 
 @Controller
 @RequestMapping(value = "/api/finance", produces = MediaTypes.HAL_JSON_UTF8_VALUE)
@@ -51,12 +49,15 @@ public class FinanceApiController {
     @GetMapping("institution-list-yearly")
     public ResponseEntity institutionListYearly() {
 
-//        Page<Finance> page = this.financeRepository.findAllGroupByYearly(pageable);
-//        JPAQueryFactory queryFactory
+        ArrayList<List<FinanceItemDto>> item = new ArrayList<>();
+        List<Integer> listByYear = this.financeRepositorySupport.findAllGroupByYear();
 
-        List<FinanceItemDto> result = this.financeRepositorySupport.findAllGroupByYear();
+        listByYear.forEach(year -> {
+            List<FinanceItemDto> result = this.financeRepositorySupport.findAllWhereYearGroupByBank(year);
+            item.add(result);
+        });
 
-        return ResponseEntity.ok(result);
+        return ResponseEntity.ok(item);
     }
 
 }

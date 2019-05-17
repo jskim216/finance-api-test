@@ -1,6 +1,5 @@
 package jskim216.financeapi.financeInfo;
 
-import jskim216.financeapi.banks.Bank;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -15,9 +14,8 @@ import javax.validation.constraints.NotNull;
 public class FinanceItemDto {
 
     @NotNull
-    private int year;
+    private String instituteName;
     @NotNull
-    private Bank instituteCode;
-    @NotNull
-    private int total_amount;
+    private int totalAmount;
+
 }
